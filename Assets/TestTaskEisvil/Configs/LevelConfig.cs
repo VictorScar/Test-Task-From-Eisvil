@@ -6,6 +6,7 @@ namespace TestTaskEisvil.Configs
     public class LevelConfig : ScriptableObject
     {
         [SerializeField] private float maxLoadingTime = 2f;
+        
 
         public float MaxLoadingTime => maxLoadingTime;
     }
