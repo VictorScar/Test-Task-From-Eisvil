@@ -32,6 +32,7 @@ namespace TestTaskEisvil.Character
 
         public void ChangeWeapon(int changeDirection)
         {
+            Debug.Log("Change Weapon at " + changeDirection);
         }
     }
 }

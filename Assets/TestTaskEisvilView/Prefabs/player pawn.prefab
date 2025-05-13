@@ -122,11 +122,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2617066326455233293}
-  - component: {fileID: 7896186055503081150}
   - component: {fileID: 1755081291047491018}
   - component: {fileID: 132549574627287638}
   - component: {fileID: 340468107600494376}
-  - component: {fileID: 6043118991295256085}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -149,20 +147,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 132293624257424209}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &7896186055503081150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3521193704225546706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d98263b50b8da42b4da173af2bfd55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 6043118991295256085}
-  weaponHolder: {fileID: 132293624257424209}
 --- !u!33 &1755081291047491018
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -236,33 +220,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!54 &6043118991295256085
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3521193704225546706}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!1 &4404978134281172989
 GameObject:
   m_ObjectHideFlags: 0

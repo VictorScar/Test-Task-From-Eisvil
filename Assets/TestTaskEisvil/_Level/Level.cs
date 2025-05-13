@@ -24,6 +24,7 @@ namespace TestTaskEisvil._Level
             Debug.Log("Level Init");
             pawn.Init();
             initData.Player.Pawn = pawn;
+            initData.Player.InputController.IsEnabled = true;
         }
     }
 

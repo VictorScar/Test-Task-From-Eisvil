@@ -8,24 +8,12 @@ namespace TestTaskEisvil.InputSystem
 {
     public class InputController : MonoBehaviour
     {
-        [SerializeField] private InputData _inputData;
         [SerializeField] private PlayerPawn _pawn;
+        private IInputAdapter _inputAdapter;
 
-        private GameInput _gameInput;
-  
-        public bool IsActive
+        public bool IsEnabled
         {
-            set
-            {
-                if (value)
-                {
-                    _gameInput.Enable();
-                }
-                else
-                {
-                    _gameInput.Disable();
-                }
-            }
+            set { _inputAdapter.IsEnabled = value; }
         }
 
         public PlayerPawn Pawn
@@ -38,23 +26,28 @@ namespace TestTaskEisvil.InputSystem
         {
             if (_pawn)
             {
-                var moveInput = _gameInput.Gameplay.Movement.ReadValue<Vector2>();
+                var moveInput = _inputAdapter.GetMovementInput();
                 _pawn.Move(moveInput.y);
                 _pawn.Rotate(moveInput.x);
 
-                if (_gameInput.Gameplay.Shoot.IsPressed())
+                if (_inputAdapter.IsShootInput)
                 {
                     _pawn.Attack();
                 }
 
-                _pawn.ChangeWeapon((int)_gameInput.Gameplay.MouseWheel.ReadValue<Vector2>().y);
+                var changeWeaponValue = _inputAdapter.ChangeWeaponInput();
+
+                if (changeWeaponValue != 0)
+                {
+                    _pawn.ChangeWeapon(changeWeaponValue);
+                }
+                
             }
         }
-        
-        public void Init()
+
+        public void Init(IInputAdapter inputAdapter)
         {
-            _gameInput = new GameInput();
-            _gameInput.Enable();
+            _inputAdapter = inputAdapter;
         }
     }
 }

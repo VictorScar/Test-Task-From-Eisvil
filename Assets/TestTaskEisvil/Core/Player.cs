@@ -15,9 +15,11 @@ namespace TestTaskEisvil.Core
             set => inputController.Pawn = value;
         }
 
-        public void Init()
+        public InputController InputController => inputController;
+
+        public void Init(IInputAdapter inputAdapter)
         {
-            inputController.Init();
+            inputController.Init(inputAdapter);
         }
     }
 }

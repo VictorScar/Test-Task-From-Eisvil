@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using ScarFramework.UI;
 using TestTaskEisvil.Configs;
+using TestTaskEisvil.InputSystem;
 using TestTaskEisvil.UI;
 using UnityEngine;
 
@@ -12,12 +13,14 @@ namespace TestTaskEisvil.Core
         [SerializeField] private UISystem uiSystem;
         [SerializeField] private Player player;
         [SerializeField] private SceneController _sceneController;
+       
 
         private GameServiceProvider _serviceProvider;
 
         public async UniTask Init()
         {
-            player.Init();
+            var inputAdapter = new NewInputSystemAdapter();
+            player.Init(inputAdapter);
             _sceneController.Init(new LevelControllerData{Player = player, UISystem = uiSystem, LevelConfig = gameConfig.LevelConfig});
             _serviceProvider = new GameServiceProvider(new ServiceProviderData
                 { SceneController = _sceneController, UISystem = uiSystem });
