@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e93daf43b9b08243ad4ad0e3667265a, type: 3}
-  m_Name: GameConfig
+  m_Script: {fileID: 11500000, guid: 2f439b12b58f59643ab8c36b3d6d42f1, type: 3}
+  m_Name: PawnConfig
   m_EditorClassIdentifier: 
-  levelConfig: {fileID: 11400000, guid: 22836e99617d2894791f2388060e1624, type: 2}
-  pawnConfig: {fileID: 11400000, guid: 7c2f6b25efd151940b65ac006e1e972c, type: 2}
+  pawnPrefab: {fileID: 3170200060607206686, guid: 0753faa4eafcb594aada236539c97996, type: 3}
+  pawnData:
+    BaseMoveSpeed: 5
+    BaseRotateSpeed: 100
+    MaxHealth: 100

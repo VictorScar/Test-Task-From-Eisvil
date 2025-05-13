@@ -1,6 +1,9 @@
 using System;
+using System.Threading;
 using ScarFramework.UI;
 using TestTaskEisvil.Character;
+using TestTaskEisvil.Characters._Player;
+using TestTaskEisvil.Configs;
 using TestTaskEisvil.Core;
 using UnityEngine;
 
@@ -9,9 +12,11 @@ namespace TestTaskEisvil._Level
     public class Level : MonoBehaviour
     {
         [SerializeField] private PlayerSpawnPoint playerSpawn;
-        [SerializeField] private PlayerPawn pawn;
+        [SerializeField] private LevelScenario scenario;
         
         private LevelInitData _initData;
+        public PlayerPawn PlayerPawn { get; set; }
+        public PlayerSpawnPoint SpawnPoint => playerSpawn;
 
         private void Start()
         {
@@ -22,9 +27,15 @@ namespace TestTaskEisvil._Level
         {
             _initData = initData;
             Debug.Log("Level Init");
-            pawn.Init();
-            initData.Player.Pawn = pawn;
-            initData.Player.InputController.IsEnabled = true;
+            scenario.Init(new LevelScenarioData
+            {
+                Level = this, UISystem = _initData.UISystem,
+                Player = _initData.Player,
+                InputController = _initData.Player.InputController,
+                PawnConfig = initData.PawnConfig
+            });
+
+            scenario.Run(CancellationToken.None);
         }
     }
 
@@ -32,5 +43,6 @@ namespace TestTaskEisvil._Level
     {
         public UISystem UISystem;
         public Player Player;
+        public PlayerPawnConfig PawnConfig;
     }
 }

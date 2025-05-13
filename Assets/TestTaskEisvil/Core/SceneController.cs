@@ -32,7 +32,8 @@ namespace TestTaskEisvil.Core
 
             if (_currentLevel)
             {
-                _currentLevel.Init(new LevelInitData{Player = _data.Player, UISystem = _data.UISystem});
+                _currentLevel.Init(new LevelInitData{Player = _data.Player, UISystem = _data.UISystem, 
+                    PawnConfig = _data.PawnConfig});
             }
             else
             {
@@ -46,5 +47,6 @@ namespace TestTaskEisvil.Core
         public Player Player;
         public UISystem UISystem;
         public LevelConfig LevelConfig;
+        public PlayerPawnConfig PawnConfig;
     }
 }

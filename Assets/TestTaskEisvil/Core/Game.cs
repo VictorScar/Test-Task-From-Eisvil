@@ -21,7 +21,8 @@ namespace TestTaskEisvil.Core
         {
             var inputAdapter = new NewInputSystemAdapter();
             player.Init(inputAdapter);
-            _sceneController.Init(new LevelControllerData{Player = player, UISystem = uiSystem, LevelConfig = gameConfig.LevelConfig});
+            _sceneController.Init(new LevelControllerData{Player = player, UISystem = uiSystem, 
+                LevelConfig = gameConfig.LevelConfig, PawnConfig = gameConfig.PawnConfig});
             _serviceProvider = new GameServiceProvider(new ServiceProviderData
                 { SceneController = _sceneController, UISystem = uiSystem });
 

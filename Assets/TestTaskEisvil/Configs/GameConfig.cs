@@ -6,7 +6,8 @@ namespace TestTaskEisvil.Configs
     public class GameConfig : ScriptableObject
     {
         [SerializeField] private LevelConfig levelConfig;
-
+        [SerializeField] private PlayerPawnConfig pawnConfig;
         public LevelConfig LevelConfig => levelConfig;
+        public PlayerPawnConfig PawnConfig => pawnConfig;
     }
 }

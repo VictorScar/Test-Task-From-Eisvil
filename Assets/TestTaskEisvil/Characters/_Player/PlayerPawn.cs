@@ -1,4 +1,8 @@
+using TestTaskEisvil.Characters._Player;
+using TestTaskEisvil.Characters._Player.Components;
+using TestTaskEisvil.Configs;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace TestTaskEisvil.Character
 {
@@ -6,28 +10,31 @@ namespace TestTaskEisvil.Character
     {
         [SerializeField] private HealthController _health;
         [SerializeField] private PlayerMover _mover;
-        [SerializeField] private ShootControler _shootControler;
+        [SerializeField] private CombatController combatController;
         [SerializeField] private PawnParameters _parameters;
-        [SerializeField] private CharacterController charController;
-        
-        public void Init()
+        [SerializeField] private Rigidbody rb;
+
+        private PawnData _data;
+
+        public void Init(PawnData data)
         {
-            _mover.Init(charController);
+            _data = data;
+            _mover.Init(rb);
         }
-        
+
         public void Move(float moveInput)
         {
-            _mover.Move(moveInput, _parameters.MoveSpeed);
+            _mover.Move(moveInput, _data.BaseMoveSpeed);
         }
 
         public void Rotate(float angle)
         {
-            _mover.Rotate(angle, _parameters.RotationSpeed);
+            _mover.Rotate(angle, _data.BaseRotateSpeed);
         }
 
         public void Attack()
         {
-            Debug.Log("Attack");
+            combatController.Attack();
         }
 
         public void ChangeWeapon(int changeDirection)

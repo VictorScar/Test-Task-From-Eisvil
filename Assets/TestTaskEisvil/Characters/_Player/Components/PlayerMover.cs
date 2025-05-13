@@ -5,25 +5,25 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
 {
-    private CharacterController _charController;
+    private Rigidbody _rb;
     private Vector3 _movement;
     private Vector3 _rotation;
 
     private void Update()
     {
-        if (_charController)
+        if (_rb)
         {
-            _charController.Move(_movement);
-            _charController.transform.Rotate(_rotation);
+            _rb.position +=_movement;
+            _rb.rotation *= Quaternion.Euler(_rotation);
         }
 
         _movement = Vector3.zero;
         _rotation = Vector3.zero;
     }
 
-    public void Init(CharacterController characterController)
+    public void Init(Rigidbody rigidbody)
     {
-        _charController = characterController;
+        _rb = rigidbody;
     }
 
     public void Move(float inputDirection, float moveSpeed)

@@ -8,11 +8,14 @@ using UnityEngine;
 public abstract class GameScenarioBase<T> : MonoBehaviour //where T: IScenarioData
 {
     private CancellationTokenSource _internalTokenSource;
+    protected T _data; 
     
-    public void Init<T>(T data)
+    public void Init(T data)
     {
-       
+        _data = data;
     }
+    
+    
 
     public async UniTask Run(CancellationToken token)
     {
