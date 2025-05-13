@@ -17,8 +17,8 @@ namespace TestTaskEisvil.Core
 
         public async UniTask Init()
         {
-            _sceneController.Init(gameConfig.LevelConfig);
             player.Init();
+            _sceneController.Init(new LevelControllerData{Player = player, UISystem = uiSystem, LevelConfig = gameConfig.LevelConfig});
             _serviceProvider = new GameServiceProvider(new ServiceProviderData
                 { SceneController = _sceneController, UISystem = uiSystem });
 

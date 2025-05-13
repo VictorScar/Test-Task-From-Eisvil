@@ -1,18 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputData : MonoBehaviour
+[Serializable]
+public struct InputData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Vector2 MouseDirection;
+    public Vector2 MoveInput;
+    public float MouseWheelInput;
+    public bool ShootData;
 }

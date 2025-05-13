@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using ScarFramework.UI;
 using TestTaskEisvil._Level;
 using TestTaskEisvil.Configs;
 using UnityEngine;
@@ -9,16 +10,16 @@ namespace TestTaskEisvil.Core
     public class SceneController : MonoBehaviour
     {
         private Level _currentLevel;
-        private LevelConfig _config;
+        private LevelControllerData _data;
         public Level CurrentLevel
         {
             get => _currentLevel;
             set => _currentLevel = value;
         }
 
-        public void Init(LevelConfig config)
+        public void Init(LevelControllerData data)
         {
-            _config = config;
+            _data = data;
             _currentLevel = null;
         }
 
@@ -27,16 +28,23 @@ namespace TestTaskEisvil.Core
             var levelLoading = SceneManager.LoadSceneAsync("GameScene");
             await UniTask.WaitUntil(() => levelLoading.isDone);
             await UniTask.WhenAny(UniTask.WaitUntil(() => _currentLevel != null),
-                UniTask.WaitForSeconds(_config.MaxLoadingTime));
+                UniTask.WaitForSeconds(_data.LevelConfig.MaxLoadingTime));
 
             if (_currentLevel)
             {
-                _currentLevel.Init(new LevelInitData());
+                _currentLevel.Init(new LevelInitData{Player = _data.Player, UISystem = _data.UISystem});
             }
             else
             {
                 Debug.Log("Level not found!");
             }
         }
+    }
+
+    public struct LevelControllerData
+    {
+        public Player Player;
+        public UISystem UISystem;
+        public LevelConfig LevelConfig;
     }
 }
