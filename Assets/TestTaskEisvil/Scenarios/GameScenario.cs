@@ -6,7 +6,7 @@ namespace TestTaskEisvil.Scenarios
 {
     public abstract class GameScenario<T> : ScenarioBase where T: IScenarioData
     {
-        private CancellationTokenSource _internalTokenSource;
+        protected CancellationTokenSource _internalTokenSource;
         protected T _data; 
     
         public void Init(T data)

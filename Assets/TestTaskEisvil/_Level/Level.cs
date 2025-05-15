@@ -38,7 +38,8 @@ namespace TestTaskEisvil._Level
                 Level = this, UISystem = _initData.UISystem,
                 Player = _initData.Player,
                 InputController = _initData.Player.InputController,
-                PawnConfig = initData.PawnConfig
+                PawnConfig = initData.PawnConfig,
+                ScenariosContainer = _initData.ScenariosContainer
             });
 
             levelScenario.Run(_initData.CancellationToken);

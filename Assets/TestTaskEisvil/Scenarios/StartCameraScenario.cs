@@ -14,7 +14,7 @@ namespace TestTaskEisvil._Level.Scenarios
             var toTargetDirection = (_data.Target.position - _data.Camera.Position).normalized;
             _data.Camera.Rotation = Quaternion.LookRotation(toTargetDirection);
             
-            while (token.IsCancellationRequested |
+            while (!token.IsCancellationRequested &
                    Vector3.Distance(_data.Camera.transform.position, _data.Target.position) >
                    _data.CameraOffset)
             {
