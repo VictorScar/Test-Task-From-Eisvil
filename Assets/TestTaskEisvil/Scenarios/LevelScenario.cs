@@ -8,15 +8,19 @@ using TestTaskEisvil.Character;
 using TestTaskEisvil.Configs;
 using TestTaskEisvil.Core;
 using TestTaskEisvil.InputSystem;
+using TestTaskEisvil.Scenarios;
 using UnityEngine;
 
-public class LevelScenario : GameScenarioBase<LevelScenarioData>
+public class LevelScenario : GameScenario<LevelScenarioData>
 {
     protected override UniTask RunInternal(CancellationToken token)
     {
         var player = SpawnPlayer();
         _data.Level.PlayerPawn = player;
         _data.InputController.Pawn = player;
+        
+        
+        
         _data.InputController.IsEnabled = true;
         
         return UniTask.CompletedTask;
@@ -31,7 +35,7 @@ public class LevelScenario : GameScenarioBase<LevelScenarioData>
     }
 }
 
-public struct LevelScenarioData
+public struct LevelScenarioData: IScenarioData
 {
     public Level Level;
     public UISystem UISystem;

@@ -1,3 +1,5 @@
+using TestTaskEisvil.Characters._AI;
+
 namespace TestTaskEisvil._Level
 {
     public struct EnemySpawnData

@@ -1,7 +1,9 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using ScarFramework.UI;
 using TestTaskEisvil._Level;
 using TestTaskEisvil.Configs;
+using TestTaskEisvil.Scenarios;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,7 +35,8 @@ namespace TestTaskEisvil.Core
             if (_currentLevel)
             {
                 _currentLevel.Init(new LevelInitData{Player = _data.Player, UISystem = _data.UISystem, 
-                    PawnConfig = _data.PawnConfig});
+                    PawnConfig = _data.PawnConfig, ScenariosContainer = _data.ScenariosContainer, 
+                    CancellationToken = _data.CancelationToken});
             }
             else
             {
@@ -48,5 +51,7 @@ namespace TestTaskEisvil.Core
         public UISystem UISystem;
         public LevelConfig LevelConfig;
         public PlayerPawnConfig PawnConfig;
+        public ScenariosContainer ScenariosContainer;
+        public CancellationToken CancelationToken;
     }
 }
