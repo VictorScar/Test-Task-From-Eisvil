@@ -42,6 +42,7 @@ namespace TestTaskEisvil.Scenarios
             
             followCameraScenario.Run(_internalTokenSource.Token).Forget();
             
+            
             _data.InputController.IsEnabled = true;
             Debug.Log("Start Game");
        

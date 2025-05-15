@@ -16,7 +16,7 @@ namespace TestTaskEisvil._Level.Scenarios
             
             while (!token.IsCancellationRequested &
                    Vector3.Distance(_data.Camera.transform.position, _data.Target.position) >
-                   _data.CameraOffset)
+                   _data.CameraOffset && !_isStopped)
             {
                 _data.Camera.Position += toTargetDirection * _data.CameraMoveSpeed * Time.deltaTime;
                 await UniTask.Yield();

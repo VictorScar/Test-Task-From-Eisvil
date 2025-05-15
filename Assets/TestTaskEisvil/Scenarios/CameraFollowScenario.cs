@@ -12,7 +12,7 @@ namespace TestTaskEisvil.Scenarios
             var gameCamera = _data.GameCamera;
             var target = _data.Target;
            
-            while (!token.IsCancellationRequested && gameCamera && target)
+            while (!token.IsCancellationRequested && !_isStopped&& gameCamera && target)
             {
                 gameCamera.Position = target.position - _data.CameraOffset;
                 await UniTask.Yield(token);

@@ -7,7 +7,8 @@ namespace TestTaskEisvil.Scenarios
     public abstract class GameScenario<T> : ScenarioBase where T: IScenarioData
     {
         protected CancellationTokenSource _internalTokenSource;
-        protected T _data; 
+        protected T _data;
+        protected bool _isStopped;
     
         public void Init(T data)
         {
@@ -18,10 +19,16 @@ namespace TestTaskEisvil.Scenarios
 
         public async UniTask Run(CancellationToken token)
         {
+            _isStopped = false;
             _internalTokenSource = CancellationTokenSource.CreateLinkedTokenSource(token);
             await OnBeforeScenario(_internalTokenSource.Token);
             await RunInternal(_internalTokenSource.Token);
             OnScenarioEnd();
+        }
+
+        public void ForceEndScenario()
+        {
+            _isStopped = true;
         }
 
         protected virtual UniTask OnBeforeScenario(CancellationToken token)

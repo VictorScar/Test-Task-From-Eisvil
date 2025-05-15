@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using ScarFramework.UI;
 using TestTaskEisvil.Character;
+using TestTaskEisvil.Characters;
 using TestTaskEisvil.Characters._Player;
 using TestTaskEisvil.Configs;
 using TestTaskEisvil.Core;
@@ -14,14 +15,15 @@ namespace TestTaskEisvil._Level
     public class Level : MonoBehaviour
     {
         [SerializeField] private PlayerSpawnPoint playerSpawn;
-       // [SerializeField] private LevelScenario scenario;
-        [SerializeField] private GameCamera gameCamera;
+       [SerializeField] private GameCamera gameCamera;
+       [SerializeField] private Tower tower;
        
         private LevelInitData _initData;
         
         public PlayerPawn PlayerPawn { get; set; }
         public PlayerSpawnPoint SpawnPoint => playerSpawn;
         public GameCamera GameCamera => gameCamera;
+        public Tower Tower => tower;
 
         private void Start()
         {
