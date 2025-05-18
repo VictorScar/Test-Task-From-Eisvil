@@ -48,10 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzle: {fileID: 4272028845022083038}
   damage: 20
-  rateOfFire: 1
-  maxDistance: 20
+  rateOfFire: 0.5
+  maxDistance: 30
   projectilePrefab: {fileID: 6746017998729930281, guid: 3c568aad2775be64fb19366b25223ef6, type: 3}
   projectileSpeed: 20
+  maxProjectileLifeTime: 5
 --- !u!1 &719234795799323945
 GameObject:
   m_ObjectHideFlags: 0

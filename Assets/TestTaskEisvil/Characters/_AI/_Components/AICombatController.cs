@@ -1,47 +1,58 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AICombatController : MonoBehaviour
+namespace TestTaskEisvil.Characters._AI._Components
 {
-    [SerializeField] private LayerMask layerMask;
-    private int _damage;
-    private float _attackColldown;
-    private float _attackDistance;
-    private float _cooldown;
-
-    public event Action onAttack; 
-
-    public void Init(int damage, float attackCooldown, float attackDistance)
+    public class AICombatController : MonoBehaviour
     {
-        _damage = damage;
-        _attackDistance = attackDistance;
-        _attackColldown = attackCooldown;
-    }
+        [SerializeField] private LayerMask layerMask;
+        private int _damage;
+        private float _attackColldown;
+        private float _attackDistance;
+        private float _cooldown;
+        private IDamageSource _damageSource;
 
-    public void Attack()
-    {
-        if (_cooldown <= 0)
+        public event Action onAttack; 
+
+        public void Init(AiCombatControllerData data)
         {
-            if (Physics.Raycast(transform.position, transform.forward, out var hit, _attackDistance, layerMask))
+            _damage = data.Damage;
+            _attackDistance = data.AttackDistance;
+            _attackColldown = data.AttackCooldown;
+            _damageSource = data.DamageSource;
+        }
+
+        public void Attack()
+        {
+            if (_cooldown <= 0)
             {
-                if (hit.collider.TryGetComponent<IDamageReceiver>(out var enemy))
+                if (Physics.Raycast(transform.position, transform.forward, out var hit, _attackDistance, layerMask))
                 {
-                    enemy.ReceiveDamage(_damage);
-                    onAttack?.Invoke();
-                    _cooldown = _attackColldown;
-                    Debug.Log("NPC Attack!");
+                    if (hit.collider.TryGetComponent<IDamageReceiver>(out var enemy))
+                    {
+                        enemy.ReceiveDamage(_damage, _damageSource);
+                        onAttack?.Invoke();
+                        _cooldown = _attackColldown;
+                        Debug.Log("NPC Attack!");
+                    }
                 }
+            }
+        }
+
+        private void Update()
+        {
+            if (_cooldown > 0)
+            {
+                _cooldown -= Time.deltaTime;
             }
         }
     }
 
-    private void Update()
+    public struct AiCombatControllerData
     {
-        if (_cooldown > 0)
-        {
-            _cooldown -= Time.deltaTime;
-        }
+        public IDamageSource DamageSource;
+        public int Damage;
+        public float AttackCooldown;
+        public float AttackDistance;
     }
 }

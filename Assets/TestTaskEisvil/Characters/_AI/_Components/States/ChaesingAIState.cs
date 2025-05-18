@@ -17,19 +17,27 @@ public class ChaesingAIState : AiStateBase
 
     public override void UpdateState(float deltaTime)
     {
-        if (_pawn.Target != null)
+        if (!_data.HealthController.IsDead)
         {
-            if (Vector3.Distance(_pawn.Target.Body.position, _pawn.transform.position) > _pawn.AttackDistance-0.5f)
+            if (_pawn.Target != null)
             {
-                _pawn.MoveTo(_pawn.Target.Body.position);
-            }
-            else
-            {
-                _pawn.transform.LookAt(_pawn.Target.Body);
-                _pawn.StopMove();
-                Attack();
+                if (Vector3.Distance(_pawn.Target.Body.position, _pawn.transform.position) > _pawn.AttackDistance-0.5f)
+                {
+                    _pawn.MoveTo(_pawn.Target.Body.position);
+                }
+                else
+                {
+                    _pawn.LookAt(_pawn.Target.Body.position);
+                    _pawn.StopMove();
+                    Attack();
+                }
             }
         }
+        else
+        {
+            _data.StateController.SetState<DeadAiState>();
+        }
+       
     }
 
     private void Attack()

@@ -9,14 +9,15 @@ namespace TestTaskEisvil.Weapons
         [SerializeField] private Rigidbody rb;
         private int _damage;
         private IDamageSource _source;
+        private float _lifeTime;
 
         public event Action<Shell> onDespawn;
 
-        public void Init(int damage, float shellSpeed, IDamageSource source)
+        public void Init(int damage, float shellSpeed, IDamageSource source, float maxlifeTime)
         {
             _damage = damage;
             _source = source;
-
+            _lifeTime = maxlifeTime;
             rb.AddForce(transform.forward * shellSpeed, ForceMode.Impulse);
         }
 
@@ -28,6 +29,18 @@ namespace TestTaskEisvil.Weapons
             }
 
             Despawn();
+        }
+
+        private void Update()
+        {
+            if (_lifeTime > 0)
+            {
+                _lifeTime -= Time.deltaTime;
+            }
+            else
+            {
+                Despawn();
+            }
         }
 
         private void Despawn()

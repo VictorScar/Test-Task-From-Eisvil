@@ -1,4 +1,3 @@
-using System;
 using TestTaskEisvil._Level;
 using TestTaskEisvil.Characters._AI._Components.States;
 using UnityEngine;
@@ -29,12 +28,17 @@ namespace TestTaskEisvil.Characters._AI._Components
                         HealthController = data.HealthController,
                         CombatController = data.CombatController,
                         Level = data.Level,
-                        Pawn = data.Pawn
+                        Pawn = data.Pawn,
+                        AnimationController = data.AnimationController,
+                        Collider = data.Collider
                     });
                 }
-
-                SetState<SearchingState>();
             }
+        }
+
+        public void Run()
+        {
+            SetState<SearchingState>();
         }
 
         public bool SetState<T>() where T : AiStateBase
@@ -90,5 +94,7 @@ namespace TestTaskEisvil.Characters._AI._Components
         public HealthController HealthController;
         public Level Level;
         public Monster Pawn;
+        public AIAnimationController AnimationController;
+        public Collider Collider;
     }
 }

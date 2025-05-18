@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 113015069376001648}
   - component: {fileID: 7023125389506827195}
   - component: {fileID: 7754090973549458461}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: tentacle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +83,71 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1600301963601265516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8001930727842148528}
+  m_Layer: 12
+  m_Name: spawn point
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8001930727842148528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600301963601265516}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6276286520880701123}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3574394214600391422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6276286520880701123}
+  m_Layer: 0
+  m_Name: spawn points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6276286520880701123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3574394214600391422}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8001930727842148528}
+  - {fileID: 4436062385390243278}
+  - {fileID: 9170655132275665231}
+  m_Father: {fileID: 6674720421424046848}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4437757892699533591
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +159,7 @@ GameObject:
   - component: {fileID: 6674720421424046848}
   - component: {fileID: 7487119120863246709}
   - component: {fileID: 9020414260713204827}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: nest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,6 +181,7 @@ Transform:
   m_Children:
   - {fileID: 7631356267422660233}
   - {fileID: 380524812637165870}
+  - {fileID: 6276286520880701123}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7487119120863246709
@@ -130,8 +196,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d21b04600a4404b9b7aa739fbd424d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthController: {fileID: 514724586801118115}
   id: 0
+  healthController: {fileID: 514724586801118115}
+  spawnPoints:
+  - {fileID: 8001930727842148528}
+  - {fileID: 4436062385390243278}
+  - {fileID: 9170655132275665231}
+  defaultSpawnOffset: 3
 --- !u!136 &9020414260713204827
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -166,7 +237,7 @@ GameObject:
   - component: {fileID: 4132853799321395188}
   - component: {fileID: 6498585065639496687}
   - component: {fileID: 4893593131601444336}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: tentacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +320,7 @@ GameObject:
   - component: {fileID: 1172748951213665397}
   - component: {fileID: 8001214823726801541}
   - component: {fileID: 5202069688985785701}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: tentacle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7631356267422660233}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,6 +428,37 @@ Transform:
   - {fileID: 113015069376001648}
   m_Father: {fileID: 6674720421424046848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7645354018929869561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4436062385390243278}
+  m_Layer: 12
+  m_Name: spawn point (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4436062385390243278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7645354018929869561}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6276286520880701123}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7896162350695324300
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 380524812637165870}
   - component: {fileID: 514724586801118115}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: health controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,6 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650186f8a1e46034d978929d5444a12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currntHealth: 0
 --- !u!1 &8032617147255754508
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +515,7 @@ GameObject:
   - component: {fileID: 3969213308456864748}
   - component: {fileID: 5421414950576739880}
   - component: {fileID: 7621265125377853183}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +598,7 @@ GameObject:
   - component: {fileID: 5683177180273382719}
   - component: {fileID: 8245870010897338293}
   - component: {fileID: 2660709548167344243}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: body (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,3 +670,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8670830146448848646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9170655132275665231}
+  m_Layer: 12
+  m_Name: spawn point (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9170655132275665231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8670830146448848646}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6276286520880701123}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

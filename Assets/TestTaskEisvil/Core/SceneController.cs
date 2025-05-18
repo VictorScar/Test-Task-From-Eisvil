@@ -36,7 +36,7 @@ namespace TestTaskEisvil.Core
             {
                 _currentLevel.Init(new LevelInitData{Player = _data.Player, UISystem = _data.UISystem, 
                     PawnConfig = _data.PawnConfig, ScenariosContainer = _data.ScenariosContainer, 
-                    CancellationToken = _data.CancelationToken});
+                    CancellationToken = _data.CancelationToken, NpcConfig = _data.NpcConfig});
             }
             else
             {
@@ -50,6 +50,7 @@ namespace TestTaskEisvil.Core
         public Player Player;
         public UISystem UISystem;
         public LevelConfig LevelConfig;
+        public NpcConfig NpcConfig;
         public PlayerPawnConfig PawnConfig;
         public ScenariosContainer ScenariosContainer;
         public CancellationToken CancelationToken;

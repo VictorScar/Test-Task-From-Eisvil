@@ -1,3 +1,4 @@
+using TestTaskEisvil.Characters;
 using TestTaskEisvil.Characters._Player;
 using TestTaskEisvil.Characters._Player.Components;
 using TestTaskEisvil.Configs;
@@ -6,30 +7,37 @@ using UnityEngine.Serialization;
 
 namespace TestTaskEisvil.Character
 {
-    public class PlayerPawn : MonoBehaviour
+    public class PlayerPawn : MonoBehaviour, IDamageSource, IDamageReceiver
     {
-        [SerializeField] private HealthController _health;
-        [SerializeField] private PlayerMover _mover;
+        [SerializeField] private HealthController health;
+        [SerializeField] private PlayerMover mover;
         [SerializeField] private CombatController combatController;
         [SerializeField] private PawnParameters _parameters;
         [SerializeField] private Rigidbody rb;
+        [SerializeField] private EquipController equipController;
 
         private PawnData _data;
 
         public void Init(PawnData data)
         {
             _data = data;
-            _mover.Init(rb);
+            mover.Init(rb);
+            equipController.Init();
+            combatController.Init(new CombatControllerData
+            {
+                DamageSource = this,
+                EquipController = equipController
+            });
         }
 
         public void Move(float moveInput)
         {
-            _mover.Move(moveInput, _data.BaseMoveSpeed);
+            mover.Move(moveInput, _data.BaseMoveSpeed);
         }
 
         public void Rotate(float angle)
         {
-            _mover.Rotate(angle, _data.BaseRotateSpeed);
+            mover.Rotate(angle, _data.BaseRotateSpeed);
         }
 
         public void Attack()
@@ -40,6 +48,11 @@ namespace TestTaskEisvil.Character
         public void ChangeWeapon(int changeDirection)
         {
             Debug.Log("Change Weapon at " + changeDirection);
+        }
+
+        public void ReceiveDamage(int damage, IDamageSource source)
+        {
+            health.ReceiveDamage(damage);
         }
     }
 }

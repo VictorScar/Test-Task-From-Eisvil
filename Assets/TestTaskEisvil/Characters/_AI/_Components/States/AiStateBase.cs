@@ -28,9 +28,10 @@ namespace TestTaskEisvil.Characters._AI._Components.States
     public enum AiStateID
     {
         None,
-        Default,
+        Searching,
         Chasing,
-        Attack
+        Attack,
+        Dead
     }
 
     public struct AIStateData
@@ -41,5 +42,7 @@ namespace TestTaskEisvil.Characters._AI._Components.States
         public AICombatController CombatController;
         public Level Level;
         public Monster Pawn;
+        public AIAnimationController AnimationController;
+        public Collider Collider;
     }
 }

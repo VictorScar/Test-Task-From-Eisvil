@@ -45,6 +45,8 @@ namespace TestTaskEisvil.Scenarios
             
             _data.InputController.IsEnabled = true;
             Debug.Log("Start Game");
+            
+            _data.Level.NpcControlSystem.Init(_data.Level, _data.NpcConfig);
        
         }
 
@@ -65,5 +67,6 @@ namespace TestTaskEisvil.Scenarios
         public InputController InputController;
         public PlayerPawnConfig PawnConfig;
         public ScenariosContainer ScenariosContainer;
+        public NpcConfig NpcConfig;
     }
 }

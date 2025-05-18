@@ -7,7 +7,7 @@ namespace TestTaskEisvil.Characters
     {
         [SerializeField] private HealthController healthController;
     
-        public void ReceiveDamage(int damage)
+        public void ReceiveDamage(int damage, IDamageSource source)
         {
             healthController.ReceiveDamage(damage);
         }

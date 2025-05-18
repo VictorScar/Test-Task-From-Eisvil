@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 
-public class DeadAiState : MonoBehaviour
+namespace TestTaskEisvil.Characters._AI._Components.States
 {
-    // Start is called before the first frame update
-    void Start()
+    public class DeadAiState : AiStateBase
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void Enter()
+        {
+            _data.Collider.enabled = false;
+            _data.Mover.StopMove();
+            _data.AnimationController.DeadAnimation();
+            _data.Pawn.Die();
+        }
     }
 }

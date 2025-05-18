@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
+    [SerializeField] private int _currntHealth;
     private int _maxHealth;
-    private int _currntHealth;
     private bool _isDead;
 
     public event Action<int> onHealthChanged;
@@ -35,6 +35,7 @@ public class HealthController : MonoBehaviour
             {
                 _currntHealth = 0;
                 onDie?.Invoke();
+                _isDead = true;
             }
         }
        

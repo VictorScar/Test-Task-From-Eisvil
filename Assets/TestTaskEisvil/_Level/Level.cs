@@ -15,15 +15,17 @@ namespace TestTaskEisvil._Level
     public class Level : MonoBehaviour
     {
         [SerializeField] private PlayerSpawnPoint playerSpawn;
-       [SerializeField] private GameCamera gameCamera;
-       [SerializeField] private Tower tower;
-       
+        [SerializeField] private GameCamera gameCamera;
+        [SerializeField] private Tower tower;
+        [SerializeField] private NPCControlSystem npcControlSystem;
+
         private LevelInitData _initData;
-        
+
         public PlayerPawn PlayerPawn { get; set; }
         public PlayerSpawnPoint SpawnPoint => playerSpawn;
         public GameCamera GameCamera => gameCamera;
         public Tower Tower => tower;
+        public NPCControlSystem NpcControlSystem => npcControlSystem;
 
         private void Start()
         {
@@ -41,9 +43,10 @@ namespace TestTaskEisvil._Level
                 Player = _initData.Player,
                 InputController = _initData.Player.InputController,
                 PawnConfig = initData.PawnConfig,
-                ScenariosContainer = _initData.ScenariosContainer
+                ScenariosContainer = _initData.ScenariosContainer,
+                NpcConfig = _initData.NpcConfig
             });
-
+            npcControlSystem.Init(this, _initData.NpcConfig);
             levelScenario.Run(_initData.CancellationToken);
         }
     }
@@ -55,5 +58,6 @@ namespace TestTaskEisvil._Level
         public PlayerPawnConfig PawnConfig;
         public ScenariosContainer ScenariosContainer;
         public CancellationToken CancellationToken;
+        public NpcConfig NpcConfig;
     }
 }

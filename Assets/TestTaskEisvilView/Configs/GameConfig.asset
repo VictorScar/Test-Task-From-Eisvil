@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelConfig: {fileID: 11400000, guid: 22836e99617d2894791f2388060e1624, type: 2}
   pawnConfig: {fileID: 11400000, guid: 7c2f6b25efd151940b65ac006e1e972c, type: 2}
+  npcConfig: {fileID: 11400000, guid: e9734fb965343234aa6a42d969b44373, type: 2}

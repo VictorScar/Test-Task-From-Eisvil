@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using TestTaskEisvil._Level;
 using TestTaskEisvil.Characters._AI;
 using TestTaskEisvil.Scenarios;
 using UnityEngine;

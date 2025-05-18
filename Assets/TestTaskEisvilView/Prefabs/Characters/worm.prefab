@@ -381,11 +381,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
+  despawnTime: 3
   healthController: {fileID: 6109902937049483202}
   mover: {fileID: 5674278869780766208}
   combatController: {fileID: 6749669677105193259}
   stateController: {fileID: 189988473989578631}
   animationController: {fileID: 1035908991916418661}
+  collider: {fileID: 793791557076400319}
 --- !u!195 &4790613211090546706
 NavMeshAgent:
   m_ObjectHideFlags: 0

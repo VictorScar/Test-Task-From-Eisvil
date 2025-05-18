@@ -8,6 +8,7 @@ namespace TestTaskEisvil.Weapons
     {
         [SerializeField] private Shell projectilePrefab;
         [SerializeField] private float projectileSpeed;
+        [SerializeField] private float maxProjectileLifeTime;
 
         private float _cooldown;
         
@@ -16,7 +17,7 @@ namespace TestTaskEisvil.Weapons
             if (_cooldown <= 0)
             {
                 var shell = Instantiate(projectilePrefab, muzzle.position, muzzle.rotation, transform);
-                shell.Init(damage, projectileSpeed, source);
+                shell.Init(damage, projectileSpeed, source, maxProjectileLifeTime);
                 _cooldown = rateOfFire;
             }
            
