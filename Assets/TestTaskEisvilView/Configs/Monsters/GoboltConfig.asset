@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9c1802322bd8fd448425757b98e64ee, type: 3}
-  m_Name: WormConfig
+  m_Name: GoboltConfig
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2052831029593986152, guid: 3be6ae9e6bc2b5a44b1d3a0fe14cb066, type: 3}
+  prefab: {fileID: 2052831029593986152, guid: dc7a1dd70bafe6c4d8c5efa2a0ef333c, type: 3}
   data:
-    MaxHealth: 40
-    MoveSpeed: 3
-    RotationSpeed: 60
-    Damage: 5
-    AttackCooldown: 1
+    MaxHealth: 15
+    MoveSpeed: 5
+    RotationSpeed: 80
+    Damage: 10
+    AttackCooldown: 2
     AttackDistance: 3
-    DespawnTime: 2
+    DespawnTime: 3

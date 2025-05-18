@@ -22,8 +22,12 @@ namespace TestTaskEisvil.Characters._AI
         public void Die()
         {
             onDie?.Invoke(this);
-           OnDie();
-           OnDespawnAsync(CancellationToken.None);
+            OnDie();
+        }
+
+        public void Despawn()
+        {
+            onDeSpawn?.Invoke(this);
         }
 
         protected virtual void OnDie()
@@ -33,12 +37,6 @@ namespace TestTaskEisvil.Characters._AI
         public void SetActive(bool enabled)
         {
             gameObject.SetActive(enabled);
-        }
-
-        private async UniTask OnDespawnAsync(CancellationToken cancellationToken)
-        {
-            await UniTask.WaitForSeconds(despawnTime);
-            onDeSpawn?.Invoke(this);
         }
     }
 

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monstersConfigs:
   - {fileID: 11400000, guid: 101f12fe18130c946b4c8106b4cccc47, type: 2}
+  - {fileID: 11400000, guid: e1e6c8a5256f5b342ad7d75d9a5b6a45, type: 2}
   minSpawnTime: 10
   spawnTimeSpread: 5

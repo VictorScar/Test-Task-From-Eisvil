@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using TestTaskEisvil._Level;
 using TestTaskEisvil.Characters._AI._Components;
 using TestTaskEisvil.Characters._AI._Components.States;
@@ -53,6 +54,17 @@ namespace TestTaskEisvil.Characters._AI
             stateController.Run();
         }
 
+        protected override void OnDie()
+        {
+            DeathDelay();
+        }
+
+        private async UniTask DeathDelay()
+        {
+            await UniTask.WaitForSeconds(_data.DespawnTime);
+            Despawn();
+        }
+
         public void ReceiveDamage(int damage, IDamageSource source)
         {
             healthController.ReceiveDamage(damage);
@@ -97,5 +109,6 @@ namespace TestTaskEisvil.Characters._AI
         public int Damage;
         public float AttackCooldown;
         public float AttackDistance;
+        public float DespawnTime;
     }
 }

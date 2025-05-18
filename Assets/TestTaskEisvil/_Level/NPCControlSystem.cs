@@ -44,41 +44,19 @@ namespace TestTaskEisvil._Level
 
         public void SpawnMonster(Transform spawnPoint)
         {
-            if (_monstersPool.GetPoolObject(out var monster))
-            {
-                SpawnMonsterInternal(monster, spawnPoint);
-         
-            }
-            else
-            {
-                if (_npcConfig.MonsterConfigs != null && _npcConfig.MonsterConfigs.Length > 0)
-                {
-                    var npcConfigIndex = Random.Range(0, _npcConfig.MonsterConfigs.Length);
-                    CreateMonster(_npcConfig.MonsterConfigs[npcConfigIndex]);
-                    SpawnMonster(spawnPoint);
-                }
-            }
-        }
+            var monsterID = GetRandomID();
+            SpawnMonsterByID(spawnPoint, monsterID);
+   }
 
-        /*public void SpawnMonsterByID(EnemyID id)
+     
+
+        public void SpawnMonsterByID(Transform parent, EnemyID id)
         {
             if (_monstersPool.GetPoolObject((m) => m.ID == id, out var monster))
             {
-                monster.SetActive(true);
-                monster.onDie += OnNpcDying;
-                monster.onDeSpawn += OnDespawnNPC;
-                spawnedMonsters.Add(monster);
-                monster.OnSpawn();
+               SpawnMonsterInternal(monster, parent);
             }
-            else
-            {
-                if (_npcConfig.MonsterConfigs != null && _npcConfig.MonsterConfigs.Length > 0)
-                {
-                    var npcConfigIndex = Random.Range(0, _npcConfig.MonsterConfigs.Length);
-                    CreateMonster(_npcConfig.MonsterConfigs[npcConfigIndex]);
-                }
-            }
-        }*/
+        }
 
         private void SpawnMonsterInternal(Monster monster, Transform spawnPoint)
         {
@@ -102,6 +80,12 @@ namespace TestTaskEisvil._Level
                     CreateMonster(monsterConfig);
                 }
             }
+        }
+        
+        private EnemyID GetRandomID()
+        {
+            var randomIndex = Random.Range(0, _npcConfig.MonsterConfigs.Length);
+            return _npcConfig.MonsterConfigs[randomIndex].Prefab.ID;
         }
 
         private void Update()

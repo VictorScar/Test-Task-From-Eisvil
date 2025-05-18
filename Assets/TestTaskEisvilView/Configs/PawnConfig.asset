@@ -15,5 +15,5 @@ MonoBehaviour:
   pawnPrefab: {fileID: 3170200060607206686, guid: 0753faa4eafcb594aada236539c97996, type: 3}
   pawnData:
     BaseMoveSpeed: 5
-    BaseRotateSpeed: 100
+    BaseRotateSpeed: 200
     MaxHealth: 100
