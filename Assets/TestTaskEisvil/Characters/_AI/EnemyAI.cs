@@ -19,6 +19,11 @@ namespace TestTaskEisvil.Characters._AI
 
         public abstract void Reset();
 
+        public virtual void OnSpawn()
+        {
+            
+        }
+        
         public void Die()
         {
             onDie?.Invoke(this);

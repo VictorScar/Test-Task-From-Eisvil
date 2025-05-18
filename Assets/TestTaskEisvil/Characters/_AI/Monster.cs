@@ -23,6 +23,14 @@ namespace TestTaskEisvil.Characters._AI
         public IAiTarget Target { get; set; }
         public float AttackDistance => _data.AttackDistance;
 
+        private void Update()
+        {
+            if (_isInited)
+            {
+                stateController.UpdateState();
+            }
+        }
+        
         public void Init(MonsterData data, Level level)
         {
             _data = data;
@@ -48,7 +56,7 @@ namespace TestTaskEisvil.Characters._AI
             _isInited = true;
         }
 
-        public void OnSpawn()
+        public override void OnSpawn()
         {
             healthController.Init(_data.MaxHealth);
             stateController.Run();
@@ -57,12 +65,6 @@ namespace TestTaskEisvil.Characters._AI
         protected override void OnDie()
         {
             DeathDelay();
-        }
-
-        private async UniTask DeathDelay()
-        {
-            await UniTask.WaitForSeconds(_data.DespawnTime);
-            Despawn();
         }
 
         public void ReceiveDamage(int damage, IDamageSource source)
@@ -81,13 +83,7 @@ namespace TestTaskEisvil.Characters._AI
             mover.StopMove();
         }
 
-        private void Update()
-        {
-            if (_isInited)
-            {
-                stateController.UpdateState();
-            }
-        }
+ 
 
         public void LookAt(Vector3 target)
         {
@@ -97,6 +93,12 @@ namespace TestTaskEisvil.Characters._AI
         public override void Reset()
         {
             OnSpawn();
+        }
+        
+        private async UniTask DeathDelay()
+        {
+            await UniTask.WaitForSeconds(_data.DespawnTime);
+            Despawn();
         }
     }
 

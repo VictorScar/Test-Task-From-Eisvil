@@ -17,3 +17,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e1e6c8a5256f5b342ad7d75d9a5b6a45, type: 2}
   minSpawnTime: 10
   spawnTimeSpread: 5
+  nestData:
+    DespawnTime: 3
+    MaxHealth: 100

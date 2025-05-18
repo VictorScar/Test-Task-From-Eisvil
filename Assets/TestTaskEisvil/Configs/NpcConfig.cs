@@ -1,3 +1,4 @@
+using TestTaskEisvil.Characters._AI;
 using UnityEngine;
 
 namespace TestTaskEisvil.Configs
@@ -8,8 +9,10 @@ namespace TestTaskEisvil.Configs
         [SerializeField] private MonsterConfig[] monstersConfigs;
         [SerializeField] private float minSpawnTime;
         [SerializeField] private float spawnTimeSpread;
+        [SerializeField] private NestData nestData;
         public MonsterConfig[] MonsterConfigs => monstersConfigs;
         public float MinSpawnTime => minSpawnTime;
         public float SpawnTimeSpread => spawnTimeSpread;
+        public NestData NestData => nestData;
     }
 }

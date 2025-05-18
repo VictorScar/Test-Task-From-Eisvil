@@ -32,6 +32,7 @@ namespace TestTaskEisvil._Level
             {
                 foreach (var nest in nests)
                 {
+                    nest.Init(npcConfig.NestData);
                     var handler = new NestHandler(nest, npcConfig.MinSpawnTime, npcConfig.SpawnTimeSpread);
                     handler.onSpawn += SpawnMonster;
                     handler.onDie += RemoveNestHandler;
@@ -112,7 +113,7 @@ namespace TestTaskEisvil._Level
         {
             onMonsterDying?.Invoke(enemy);
             enemy.onDie -= OnNpcDying;
-            Debug.Log("DIIIIE!");
+            Debug.Log($"NPC ID {enemy.ID} Dying!");
         }
 
         private void OnDespawnNPC(IPoolObject poolObject)
@@ -125,10 +126,12 @@ namespace TestTaskEisvil._Level
         
         private void RemoveNestHandler(NestHandler handler)
         {
+            Debug.Log("Remove Handler!");
             handler.onSpawn -= SpawnMonster;
            // handler.onDie -= RemoveNestHandler;
             OnNpcDying(handler.Nest);
             handler.Dispose();
+            _nestHandlers.Remove(handler);
         }
 
         private void OnDestroy()
@@ -151,6 +154,8 @@ namespace TestTaskEisvil._Level
         private float _lastSpawnTime;
         private float _timeSpread;
 
+        private bool _isDisposed;
+
         public event Action<Transform> onSpawn; 
         public event Action<NestHandler> onDie; 
         
@@ -167,6 +172,8 @@ namespace TestTaskEisvil._Level
 
         public void UpdateHandler(float deltaTime)
         {
+            if(_isDisposed) return;
+            
             if (_lastSpawnTime > 0)
             {
                 _lastSpawnTime -= deltaTime;
@@ -183,6 +190,8 @@ namespace TestTaskEisvil._Level
             {
                 _nest.onDie -= OnDie;
             }
+
+            _isDisposed = true;
         }
         
         private void OnDie(EnemyAI nest)
