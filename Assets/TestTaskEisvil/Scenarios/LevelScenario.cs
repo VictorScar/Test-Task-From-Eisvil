@@ -25,7 +25,7 @@ namespace TestTaskEisvil.Scenarios
                 Camera = _data.Level.GameCamera, 
                 Target = _data.Level.PlayerPawn.transform,
                 StartCameraPoint = _data.Level.GameCamera.Position,
-                CameraMoveSpeed = 5f,
+                CameraMoveSpeed = 10f,
                 CameraOffset = 12f
             });
 
