@@ -509,6 +509,7 @@ MonoBehaviour:
   _monsterData:
     MaxHealth: 20
     MoveSpeed: 4
+    RotationSpeed: 60
     Damage: 10
     AttackCooldown: 3
     AttackDistance: 5
