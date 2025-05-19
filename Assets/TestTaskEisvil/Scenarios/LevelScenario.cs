@@ -7,26 +7,41 @@ using TestTaskEisvil.Character;
 using TestTaskEisvil.Configs;
 using TestTaskEisvil.Core;
 using TestTaskEisvil.InputSystem;
+using TestTaskEisvil.UI;
 using UnityEngine;
 
 namespace TestTaskEisvil.Scenarios
 {
     public class LevelScenario : GameScenario<LevelScenarioData>
     {
+        private GameScreen _gameScreen;
+        private Level _level;
+
+        protected override void OnInit(LevelScenarioData data)
+        {
+            _gameScreen = _data.UISystem.GetScreen<GameScreen>();
+        }
+
+        protected override UniTask OnBeforeScenario(CancellationToken token)
+        {
+            _level = _data.Level;
+            return base.OnBeforeScenario(token);
+        }
+
         protected override async UniTask RunInternal(CancellationToken token)
         {
             var player = SpawnPlayer();
-            _data.Level.PlayerPawn = player;
+            _level.PlayerPawn = player;
             _data.InputController.Pawn = player;
 
             var startCameraScenario = _data.ScenariosContainer.GetScenario<StartCameraScenario>();
             startCameraScenario.Init(new CameraScenarioData
             {
-                Camera = _data.Level.GameCamera, 
+                Camera = _data.Level.GameCamera,
                 Target = _data.Level.PlayerPawn.transform,
                 StartCameraPoint = _data.Level.GameCamera.Position,
-                CameraMoveSpeed = 10f,
-                CameraOffset = 12f
+                CameraMoveSpeed = _data.CameraSettings.StartCamersSpeed,
+                CameraOffset = _data.CameraSettings.StartCameraOffset
             });
 
             await startCameraScenario.Run(_internalTokenSource.Token);
@@ -36,30 +51,41 @@ namespace TestTaskEisvil.Scenarios
             {
                 GameCamera = _data.Level.GameCamera,
                 Target = _data.Level.PlayerPawn.transform,
-                CameraMoveSpeed = 5f,
-                CameraOffset = _data.Level.PlayerPawn.transform.position - _data.Level.GameCamera.Position
+                CameraMoveSpeed = _data.CameraSettings.CameraFollowSpeed,
+                CameraOffset = _level.PlayerPawn.transform.position - _level.GameCamera.Position
             });
-            
+
             followCameraScenario.Run(_internalTokenSource.Token).Forget();
-            
-            
+
+            var levelTimerScenario = _data.ScenariosContainer.GetScenario<LevelTimerScenario>();
+            levelTimerScenario.Init(new LevelTimerScenarioData
+            {
+                Timer = _level.LevelTimer,
+                TimerViewPanel = _gameScreen.TimeIndicator
+            });
+
+            levelTimerScenario.Run(_internalTokenSource.Token).Forget();
+
             _data.InputController.IsEnabled = true;
             Debug.Log("Start Game");
-            
-            _data.Level.NpcControlSystem.Init(_data.Level, _data.NpcConfig);
-       
+
+            _gameScreen.Show();
+            _level.NpcControlSystem.Init(_data.Level, _data.NpcConfig);
+
+            await UniTask.WhenAny(UniTask.WaitUntilCanceled(token),
+                UniTask.WaitUntil(() => _isStopped, cancellationToken: token));
         }
 
         private PlayerPawn SpawnPlayer()
         {
-            var player = Instantiate(_data.PawnConfig.PawnPrefab, _data.Level.SpawnPoint.Position, 
-                _data.Level.SpawnPoint.Rotation, _data.Level.transform);
+            var player = Instantiate(_data.PawnConfig.PawnPrefab, _level.SpawnPoint.Position,
+                _level.SpawnPoint.Rotation, _data.Level.transform);
             player.Init(_data.PawnConfig.PawnData);
             return player;
         }
     }
 
-    public struct LevelScenarioData: IScenarioData
+    public struct LevelScenarioData : IScenarioData
     {
         public Level Level;
         public UISystem UISystem;
@@ -68,5 +94,6 @@ namespace TestTaskEisvil.Scenarios
         public PlayerPawnConfig PawnConfig;
         public ScenariosContainer ScenariosContainer;
         public NpcConfig NpcConfig;
+        public LevelCameraSettings CameraSettings;
     }
 }

@@ -13,9 +13,14 @@ namespace TestTaskEisvil.Scenarios
         public void Init(T data)
         {
             _data = data;
+            OnInit(data);
         }
-    
-    
+
+        protected virtual void OnInit(T data)
+        {
+           
+        }
+
 
         public async UniTask Run(CancellationToken token)
         {
