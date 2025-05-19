@@ -63,7 +63,7 @@ namespace TestTaskEisvil.Characters._AI
 
         public void ReceiveDamage(int damage, IDamageSource source)
         {
-           healthController.ReceiveDamage(damage);
+           //healthController.ReceiveDamage(damage);
         }
     }
 
