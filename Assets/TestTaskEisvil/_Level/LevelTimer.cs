@@ -5,7 +5,7 @@ namespace TestTaskEisvil._Level
 {
     public class LevelTimer : MonoBehaviour
     {
-        private float _rawCurrentTime;
+        [SerializeField] private float _rawCurrentTime;
         private bool _isStarted;
         private int _seconds;
         private int _minutes;
@@ -42,7 +42,26 @@ namespace TestTaskEisvil._Level
 
         private void UpdateTime()
         {
-            var seconds = Mathf.FloorToInt(_rawCurrentTime);
+            if (_rawCurrentTime >= 1)
+            {
+                _seconds++;
+                _rawCurrentTime -= 1;
+                if (_seconds >= 60)
+                {
+                    _minutes++;
+                    _seconds = 0;
+                }
+
+                if (_minutes >= 60)
+                {
+                    _hours++;
+                    _minutes = 0;
+                }
+                
+                onTimeChanged?.Invoke(new TimeSpan(_hours, _minutes, _seconds));
+            }
+            
+            /*var seconds = Mathf.FloorToInt(_rawCurrentTime);
             var minutes = Mathf.FloorToInt(seconds / 60);
             var hours = Mathf.FloorToInt(minutes / 60);
 
@@ -53,7 +72,7 @@ namespace TestTaskEisvil._Level
 
             _seconds = seconds;
             _minutes = minutes;
-            _hours = hours;
+            _hours = hours;*/
         }
 
         public void Stop()

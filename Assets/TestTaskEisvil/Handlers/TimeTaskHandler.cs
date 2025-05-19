@@ -1,6 +1,7 @@
 using System;
 using TestTaskEisvil._Level;
 using TestTaskEisvil.UI;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace TestTaskEisvil.Handlers
@@ -11,12 +12,27 @@ namespace TestTaskEisvil.Handlers
         private string _description;
         private LevelTimer _levelTimer;
 
+        private bool _requiredTimeIsMinutes;
+
         public TimeTaskHandler(TimeTaskHandlerData data)
         {
             _requiredValue = data.RequiredValue;
+
+            if (_requiredValue > 60)
+            {
+                _requiredValue = Mathf.FloorToInt(_requiredValue / 60);
+                _requiredTimeIsMinutes = true;
+            }
             _description = data.Description;
             _levelTimer = data.LevelTimer;
             _taskView = data.TaskView;
+
+            _taskView.Data = new TaskViewData
+            {
+                IsCompleted = _isDone,
+                Description = _description,
+                RequiredValue = _requiredValue
+            };
             Handle();
         }
 
@@ -42,7 +58,14 @@ namespace TestTaskEisvil.Handlers
 
         private void OnTimeChanged(TimeSpan time)
         {
-            _currentValue = _levelTimer.GetTotalSeconds();
+            var totalTime = _levelTimer.GetTotalSeconds();
+
+            if (_requiredTimeIsMinutes)
+            {
+                totalTime = Mathf.FloorToInt(totalTime / 60);
+            }
+
+            _currentValue = totalTime;
 
             if (_currentValue >= _requiredValue)
             {
