@@ -48,7 +48,8 @@ namespace TestTaskEisvil._Level
                 PawnConfig = initData.PawnConfig,
                 ScenariosContainer = _initData.ScenariosContainer,
                 NpcConfig = _initData.NpcConfig,
-                CameraSettings = _initData.CameraSettings
+                CameraSettings = _initData.CameraSettings,
+                GameStateController = initData.GameStateController
             });
             npcControlSystem.Init(this, _initData.NpcConfig);
             levelScenario.Run(_initData.CancellationToken);
@@ -65,5 +66,6 @@ namespace TestTaskEisvil._Level
         public NpcConfig NpcConfig;
         public LevelCameraSettings CameraSettings;
         public LevelTasksConfig TasksConfig;
+        public GameStateController GameStateController;
     }
 }

@@ -43,7 +43,8 @@ namespace TestTaskEisvil.Core
                     CancellationToken = _data.CancelationToken, 
                     NpcConfig = _data.NpcConfig,
                     CameraSettings = _data.LevelConfig.CameraSettings,
-                    TasksConfig = _data.LevelConfig.TasksConfig
+                    TasksConfig = _data.LevelConfig.TasksConfig,
+                    GameStateController = _data.GameStateController
                 });
             }
             else
@@ -62,5 +63,6 @@ namespace TestTaskEisvil.Core
         public PlayerPawnConfig PawnConfig;
         public ScenariosContainer ScenariosContainer;
         public CancellationToken CancelationToken;
+        public GameStateController GameStateController;
     }
 }

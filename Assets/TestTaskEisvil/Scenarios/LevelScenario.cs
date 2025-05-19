@@ -6,6 +6,7 @@ using TestTaskEisvil._Level.Scenarios;
 using TestTaskEisvil.Character;
 using TestTaskEisvil.Configs;
 using TestTaskEisvil.Core;
+using TestTaskEisvil.GameStates;
 using TestTaskEisvil.InputSystem;
 using TestTaskEisvil.UI;
 using UnityEngine;
@@ -67,6 +68,7 @@ namespace TestTaskEisvil.Scenarios
             levelTimerScenario.Run(_internalTokenSource.Token).Forget();
 
             _data.InputController.IsEnabled = true;
+            _data.GameStateController.SetState<GameplayState>();
             Debug.Log("Start Game");
 
             _gameScreen.Show();
@@ -84,7 +86,7 @@ namespace TestTaskEisvil.Scenarios
             });
 
             await tasksScenario.Run(token);
-            
+
             Debug.LogError("Victory!");
         }
 
@@ -107,5 +109,6 @@ namespace TestTaskEisvil.Scenarios
         public ScenariosContainer ScenariosContainer;
         public NpcConfig NpcConfig;
         public LevelCameraSettings CameraSettings;
+        public GameStateController GameStateController;
     }
 }

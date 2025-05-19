@@ -16,6 +16,7 @@ namespace TestTaskEisvil.Core
         [SerializeField] private Player player;
         [SerializeField] private SceneController _sceneController;
         [SerializeField] private ScenariosContainer scenariosContainer;
+        [SerializeField] private GameStateController gameStateController;
 
         private GameServiceProvider _serviceProvider;
         private CancellationTokenSource _gameCancelationTokenSource;
@@ -25,6 +26,7 @@ namespace TestTaskEisvil.Core
             _gameCancelationTokenSource = new CancellationTokenSource();
             var inputAdapter = new NewInputSystemAdapter();
             player.Init(inputAdapter);
+            gameStateController.Init();
             _sceneController.Init(new LevelControllerData
             {
                 Player = player, UISystem = uiSystem,
@@ -32,7 +34,8 @@ namespace TestTaskEisvil.Core
                 PawnConfig = gameConfig.PawnConfig,
                 NpcConfig = gameConfig.NpcConfig,
                 ScenariosContainer = scenariosContainer,
-                CancelationToken = _gameCancelationTokenSource.Token
+                CancelationToken = _gameCancelationTokenSource.Token,
+                GameStateController = gameStateController
             });
             
             _serviceProvider = new GameServiceProvider(new ServiceProviderData
