@@ -34,9 +34,16 @@ namespace TestTaskEisvil.Core
 
             if (_currentLevel)
             {
-                _currentLevel.Init(new LevelInitData{Player = _data.Player, UISystem = _data.UISystem, 
-                    PawnConfig = _data.PawnConfig, ScenariosContainer = _data.ScenariosContainer, 
-                    CancellationToken = _data.CancelationToken, NpcConfig = _data.NpcConfig});
+                _currentLevel.Init(new LevelInitData
+                {
+                    Player = _data.Player,
+                    UISystem = _data.UISystem, 
+                    PawnConfig = _data.PawnConfig, 
+                    ScenariosContainer = _data.ScenariosContainer, 
+                    CancellationToken = _data.CancelationToken, 
+                    NpcConfig = _data.NpcConfig,
+                    CameraSettings = _data.LevelConfig.CameraSettings
+                });
             }
             else
             {

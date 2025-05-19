@@ -18,6 +18,7 @@ namespace TestTaskEisvil._Level
         [SerializeField] private GameCamera gameCamera;
         [SerializeField] private Tower tower;
         [SerializeField] private NPCControlSystem npcControlSystem;
+        [SerializeField] private LevelTimer levelTimer;
 
         private LevelInitData _initData;
 
@@ -26,6 +27,7 @@ namespace TestTaskEisvil._Level
         public GameCamera GameCamera => gameCamera;
         public Tower Tower => tower;
         public NPCControlSystem NpcControlSystem => npcControlSystem;
+        public LevelTimer LevelTimer => levelTimer;
 
         private void Start()
         {
@@ -44,7 +46,8 @@ namespace TestTaskEisvil._Level
                 InputController = _initData.Player.InputController,
                 PawnConfig = initData.PawnConfig,
                 ScenariosContainer = _initData.ScenariosContainer,
-                NpcConfig = _initData.NpcConfig
+                NpcConfig = _initData.NpcConfig,
+                CameraSettings = _initData.CameraSettings
             });
             npcControlSystem.Init(this, _initData.NpcConfig);
             levelScenario.Run(_initData.CancellationToken);
@@ -59,5 +62,6 @@ namespace TestTaskEisvil._Level
         public ScenariosContainer ScenariosContainer;
         public CancellationToken CancellationToken;
         public NpcConfig NpcConfig;
+        public LevelCameraSettings CameraSettings;
     }
 }
