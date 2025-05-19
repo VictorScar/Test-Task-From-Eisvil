@@ -34,7 +34,12 @@ namespace TestTaskEisvil.InputSystem
     
         public Vector2 GetMovementInput()
         {
-            return _gameInput.Gameplay.Movement.ReadValue<Vector2>();
+            var moveInput = new Vector2();
+            moveInput.y = _gameInput.Gameplay.Movement.ReadValue<Vector2>().y;
+            moveInput.x = _gameInput.Gameplay.Mouse.ReadValue<Vector2>().x;
+
+            return moveInput;
+            //return _gameInput.Gameplay.Movement.ReadValue<Vector2>();
         }
 
         public int ChangeWeaponInput()
