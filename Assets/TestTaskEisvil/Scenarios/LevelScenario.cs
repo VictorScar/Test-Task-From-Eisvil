@@ -72,8 +72,20 @@ namespace TestTaskEisvil.Scenarios
             _gameScreen.Show();
             _level.NpcControlSystem.Init(_data.Level, _data.NpcConfig);
 
-            await UniTask.WhenAny(UniTask.WaitUntilCanceled(token),
-                UniTask.WaitUntil(() => _isStopped, cancellationToken: token));
+            /*await UniTask.WhenAny(UniTask.WaitUntilCanceled(token),
+                UniTask.WaitUntil(() => _isStopped, cancellationToken: token));*/
+
+            var tasksScenario = _data.ScenariosContainer.GetScenario<LevelTaskScenario>();
+            tasksScenario.Init(new LevelTaskScenarioData
+            {
+                Level = _level,
+                TasksConfig = _level.TasksConfig,
+                UISystem = _data.UISystem
+            });
+
+            await tasksScenario.Run(token);
+            
+            Debug.LogError("Victory!");
         }
 
         private PlayerPawn SpawnPlayer()

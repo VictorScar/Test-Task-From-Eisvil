@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ece89dda2d84ea4a8d87ed5d040fa98, type: 3}
-  m_Name: LevelConfig
+  m_Script: {fileID: 11500000, guid: 7193cf32e3ab28946b0206de129d39f1, type: 3}
+  m_Name: TimeTask
   m_EditorClassIdentifier: 
-  maxLoadingTime: 2
-  tasksConfig: {fileID: 11400000, guid: 7ae06469c20934a4e9e008c768f188eb, type: 2}
-  cameraSettings: {fileID: 11400000, guid: 5a8d92eb9225e314583b8a0ed6a70efd, type: 2}
+  Description: "\u041F\u0440\u043E\u0434\u0435\u0436\u0438\u0441\u044C 2 \u043C\u0438\u043D\u0443\u0442\u044B"
+  RequiredValue: 120
+  TaskID: 1
+  TargetID: 0

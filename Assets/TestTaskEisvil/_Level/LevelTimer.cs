@@ -70,5 +70,10 @@ namespace TestTaskEisvil._Level
 
             onTimeChanged?.Invoke(new TimeSpan(_hours, _minutes, _seconds));
         }
+
+        public int GetTotalSeconds()
+        {
+            return _hours * 60 * 60 + _minutes * 60 + _seconds;
+        }
     }
 }

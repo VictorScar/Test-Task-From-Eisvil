@@ -42,7 +42,8 @@ namespace TestTaskEisvil.Core
                     ScenariosContainer = _data.ScenariosContainer, 
                     CancellationToken = _data.CancelationToken, 
                     NpcConfig = _data.NpcConfig,
-                    CameraSettings = _data.LevelConfig.CameraSettings
+                    CameraSettings = _data.LevelConfig.CameraSettings,
+                    TasksConfig = _data.LevelConfig.TasksConfig
                 });
             }
             else

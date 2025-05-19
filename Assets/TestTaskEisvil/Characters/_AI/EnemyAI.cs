@@ -49,6 +49,7 @@ namespace TestTaskEisvil.Characters._AI
     {
         Nest,
         Gobolt,
-        Worm
+        Worm,
+        All
     }
 }

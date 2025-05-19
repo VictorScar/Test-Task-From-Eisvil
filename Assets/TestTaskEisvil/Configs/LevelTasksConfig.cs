@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TestTaskEisvil.Configs
 {
-    [CreateAssetMenu(menuName = "Configs/Level/Tasks", fileName = "LevelTask")]
+    [CreateAssetMenu(menuName = "Configs/Level/TasksConfig", fileName = "LevelTaskConfig")]
     public class LevelTasksConfig : ScriptableObject
     {
         [SerializeField] private LevelTaskData[] tasks;

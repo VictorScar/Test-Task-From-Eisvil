@@ -6,6 +6,7 @@ namespace TestTaskEisvil.UI
     public class TaskPanel : UIView
     {
         [SerializeField] private RectTransform viewsContainer;
+        [SerializeField] private TaskView taskPrefab;
         
         public TaskPanelData Data
         {
@@ -17,6 +18,11 @@ namespace TestTaskEisvil.UI
                     taskView.Data = data;
                 }
             }
+        }
+
+        public TaskView CreateTaskView()
+        {
+            return Instantiate(taskPrefab, viewsContainer);
         }
     }
 

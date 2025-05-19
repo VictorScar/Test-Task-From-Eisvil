@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ece89dda2d84ea4a8d87ed5d040fa98, type: 3}
-  m_Name: LevelConfig
+  m_Script: {fileID: 11500000, guid: 7193cf32e3ab28946b0206de129d39f1, type: 3}
+  m_Name: KillEnemyTask
   m_EditorClassIdentifier: 
-  maxLoadingTime: 2
-  tasksConfig: {fileID: 11400000, guid: 7ae06469c20934a4e9e008c768f188eb, type: 2}
-  cameraSettings: {fileID: 11400000, guid: 5a8d92eb9225e314583b8a0ed6a70efd, type: 2}
+  Description: "\u0423\u0431\u0435\u0439 10 \u0432\u0440\u0430\u0433\u043E\u0432"
+  RequiredValue: 10
+  TaskID: 2
+  TargetID: 3

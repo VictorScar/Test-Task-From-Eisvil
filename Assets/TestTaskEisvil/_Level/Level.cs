@@ -28,6 +28,7 @@ namespace TestTaskEisvil._Level
         public Tower Tower => tower;
         public NPCControlSystem NpcControlSystem => npcControlSystem;
         public LevelTimer LevelTimer => levelTimer;
+        public LevelTasksConfig TasksConfig => _initData.TasksConfig;
 
         private void Start()
         {
@@ -63,5 +64,6 @@ namespace TestTaskEisvil._Level
         public CancellationToken CancellationToken;
         public NpcConfig NpcConfig;
         public LevelCameraSettings CameraSettings;
+        public LevelTasksConfig TasksConfig;
     }
 }
