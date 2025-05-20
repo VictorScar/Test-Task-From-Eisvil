@@ -58,6 +58,12 @@ namespace TestTaskEisvil.Scenarios
 
             followCameraScenario.Run(_internalTokenSource.Token).Forget();
 
+            var hintScenario = _data.ScenariosContainer.GetScenario<HintScenario>();
+            hintScenario.Init(new HintScenarioData
+            {
+                UISystem = _data.UISystem
+            });
+
             var levelTimerScenario = _data.ScenariosContainer.GetScenario<LevelTimerScenario>();
             levelTimerScenario.Init(new LevelTimerScenarioData
             {
@@ -72,6 +78,7 @@ namespace TestTaskEisvil.Scenarios
             Debug.Log("Start Game");
 
             _gameScreen.Show();
+            hintScenario.Run(token);
             _level.NpcControlSystem.Init(_data.Level, _data.NpcConfig);
 
             /*await UniTask.WhenAny(UniTask.WaitUntilCanceled(token),

@@ -10,9 +10,19 @@ namespace TestTaskEisvil.UI
         [SerializeField] private TaskPanel taskPanel;
         [SerializeField] private TimerViewPanel timeIndicator;
         [SerializeField] private HeroInfoPanel heroInfoPanel;
+        [SerializeField] private HintPanel hintPanel;
 
         public TaskPanel TaskPanel => taskPanel;
         public TimerViewPanel TimeIndicator => timeIndicator;
         public HeroInfoPanel HeroInfoPanel => heroInfoPanel;
+        public HintPanel HintPanel => hintPanel;
+
+        protected override void OnInit()
+        {
+            taskPanel.Init();
+            timeIndicator.Init();
+            heroInfoPanel.Init();
+            hintPanel.Init();
+        }
     }
 }
