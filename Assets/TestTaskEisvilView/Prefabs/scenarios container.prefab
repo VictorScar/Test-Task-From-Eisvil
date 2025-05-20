@@ -36,6 +36,7 @@ Transform:
   - {fileID: 2334038090894381755}
   - {fileID: 7570612798681238255}
   - {fileID: 7517760890525997727}
+  - {fileID: 2888763893473391754}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7839465903059242749
@@ -57,6 +58,7 @@ MonoBehaviour:
   - {fileID: 2096668743709937942}
   - {fileID: 4273336258990766905}
   - {fileID: 2043650187602212922}
+  - {fileID: 8238056873379602533}
 --- !u!1 &375721789305253566
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +103,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1407bc27ea5d24c4a9bf15c9101bb6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1306735279463428214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2888763893473391754}
+  - component: {fileID: 8238056873379602533}
+  m_Layer: 0
+  m_Name: end game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2888763893473391754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306735279463428214}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8715640886701069127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8238056873379602533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306735279463428214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f0e75f9ae7f06041a5d602f34561392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winScreenData:
+    IsWin: 1
+    Header: "\u041F\u043E\u0431\u0435\u0434\u0430!"
+    Description: "\u0412\u044B \u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043B\u0438
+      \u0432\u0441\u0435 \u0437\u0430\u0434\u0430\u043D\u0438\u044F!"
+  loseScreenData:
+    IsWin: 0
+    Header: "\u0412\u044B \u043F\u0440\u043E\u0438\u0433\u0440\u0430\u043B\u0438!"
+    Description: "\u0412\u0430\u0448\u0430 \u0431\u0430\u0437\u0430 \u0443\u043D\u0438\u0447\u0442\u043E\u0436\u0435\u043D\u0430!"
 --- !u!1 &1828999665033924258
 GameObject:
   m_ObjectHideFlags: 0

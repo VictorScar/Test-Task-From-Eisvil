@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 namespace TestTaskEisvil.Core
 {
-    public class SceneController : MonoBehaviour
+    public class LevelController : MonoBehaviour
     {
         private Level _currentLevel;
         private LevelControllerData _data;

@@ -6,6 +6,7 @@ using TestTaskEisvil.InputSystem;
 using TestTaskEisvil.Scenarios;
 using TestTaskEisvil.UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace TestTaskEisvil.Core
 {
@@ -14,7 +15,10 @@ namespace TestTaskEisvil.Core
         [SerializeField] private GameConfig gameConfig;
         [SerializeField] private UISystem uiSystem;
         [SerializeField] private Player player;
-        [SerializeField] private SceneController _sceneController;
+
+        [FormerlySerializedAs("levelontroller")] [FormerlySerializedAs("_sceneController")] [SerializeField]
+        private LevelController levelController;
+
         [SerializeField] private ScenariosContainer scenariosContainer;
         [SerializeField] private GameStateController gameStateController;
 
@@ -26,8 +30,8 @@ namespace TestTaskEisvil.Core
             _gameCancelationTokenSource = new CancellationTokenSource();
             var inputAdapter = new NewInputSystemAdapter();
             player.Init(inputAdapter);
-            gameStateController.Init();
-            _sceneController.Init(new LevelControllerData
+
+            levelController.Init(new LevelControllerData
             {
                 Player = player, UISystem = uiSystem,
                 LevelConfig = gameConfig.LevelConfig,
@@ -37,16 +41,14 @@ namespace TestTaskEisvil.Core
                 CancelationToken = _gameCancelationTokenSource.Token,
                 GameStateController = gameStateController
             });
-            
+            gameStateController.Init(levelController);
             _serviceProvider = new GameServiceProvider(new ServiceProviderData
-                { SceneController = _sceneController, UISystem = uiSystem });
+                { LevelController = levelController, UISystem = uiSystem });
 
             DontDestroyOnLoad(gameObject);
 
-            await _sceneController.LoadGame();
-
-            var loadingScreen = uiSystem.GetScreen<LoadingScreen>();
-            loadingScreen.Hide();
+            await levelController.LoadGame();
+          
         }
     }
 }

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using TestTaskEisvil.GameStates;
 using UnityEngine;
 
@@ -7,9 +8,12 @@ namespace TestTaskEisvil.Core
     {
         private GameStateBase[] _states;
         private GameStateBase _currentState;
+        private LevelController _levelController;
 
-        public void Init()
+        public void Init(LevelController levelController)
         {
+            _levelController = levelController;
+            
             _states = new GameStateBase[]
             {
                 new GameplayState(),
@@ -32,6 +36,11 @@ namespace TestTaskEisvil.Core
                     _currentState.Enter();
                 }
             }
+        }
+
+        public async UniTask RestartGame()
+        {
+            await _levelController.LoadGame();
         }
     }
 }

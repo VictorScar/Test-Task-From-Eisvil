@@ -136,12 +136,26 @@ namespace TestTaskEisvil._Level
 
         private void OnDestroy()
         {
+            StopSystem();
+        }
+
+        public void StopSystem()
+        {
             if (spawnedMonsters != null)
             {
                 foreach (var spawnedMonster in spawnedMonsters)
                 {
                     spawnedMonster.onDeSpawn -= OnDespawnNPC;
                     spawnedMonster.onDie -= OnNpcDying;
+                }
+            }
+
+            if (_nestHandlers != null)
+            {
+                for (var index = 0; index < _nestHandlers.Count; index++)
+                {
+                    var handler = _nestHandlers[index];
+                    RemoveNestHandler(handler);
                 }
             }
         }

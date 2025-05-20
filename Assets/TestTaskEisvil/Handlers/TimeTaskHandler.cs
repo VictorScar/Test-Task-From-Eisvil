@@ -2,7 +2,6 @@ using System;
 using TestTaskEisvil._Level;
 using TestTaskEisvil.UI;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace TestTaskEisvil.Handlers
 {

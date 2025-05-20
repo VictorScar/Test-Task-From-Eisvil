@@ -34,7 +34,11 @@ namespace TestTaskEisvil.Scenarios
             var player = SpawnPlayer();
             _level.PlayerPawn = player;
             _data.InputController.Pawn = player;
-
+            _data.InputController.IsEnabled = false;
+            
+            var loadingScreen = _data.UISystem.GetScreen<LoadingScreen>();
+            loadingScreen.Hide();
+            
             var startCameraScenario = _data.ScenariosContainer.GetScenario<StartCameraScenario>();
             startCameraScenario.Init(new CameraScenarioData
             {
@@ -94,7 +98,19 @@ namespace TestTaskEisvil.Scenarios
 
             await tasksScenario.Run(token);
 
-            Debug.LogError("Victory!");
+            var endGameScenario = _data.ScenariosContainer.GetScenario<EndGameScenario>();
+            endGameScenario.Init(new EndGameScenarioData
+            {
+                UISystem = _data.UISystem,
+                GameStateController = _data.GameStateController,
+                IsWin = true
+            });
+
+            _level.NpcControlSystem.StopSystem();
+            endGameScenario.Run(token).Forget();
+            followCameraScenario.ForceEndScenario();
+            levelTimerScenario.ForceEndScenario();
+            
         }
 
         private PlayerPawn SpawnPlayer()

@@ -52,7 +52,7 @@ MonoBehaviour:
   gameConfig: {fileID: 11400000, guid: 8605bf5e54c77f04bb8c6df579bc21a9, type: 2}
   uiSystem: {fileID: 2219892507878895032}
   player: {fileID: 1264609220495494883}
-  _sceneController: {fileID: 6983132309738473690}
+  levelController: {fileID: 6983132309738473690}
   scenariosContainer: {fileID: 441441416625970499}
   gameStateController: {fileID: 8303186350561333735}
 --- !u!1 &4545686099724268091

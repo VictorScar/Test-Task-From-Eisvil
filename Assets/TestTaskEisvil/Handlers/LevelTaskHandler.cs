@@ -20,7 +20,7 @@ namespace TestTaskEisvil.Handlers
 
             if (_taskView)
             {
-                Object.Destroy(_taskView);
+                Object.Destroy(_taskView.gameObject);
             }
         }
 

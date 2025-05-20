@@ -21,13 +21,13 @@ namespace TestTaskEisvil.Core
 
         public void RegisterLevel(Level level)
         {
-            _data.SceneController.CurrentLevel = level;
+            _data.LevelController.CurrentLevel = level;
         }
     }
 
     public struct ServiceProviderData
     {
-        public SceneController SceneController;
+        public LevelController LevelController;
         public UISystem UISystem;
     }
 }
