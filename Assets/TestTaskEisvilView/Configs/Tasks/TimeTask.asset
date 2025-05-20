@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TimeTask
   m_EditorClassIdentifier: 
   Description: "\u041F\u0440\u043E\u0434\u0435\u0440\u0436\u0438\u0441\u044C 2 \u043C\u0438\u043D\u0443\u0442\u044B"
-  RequiredValue: 20
+  RequiredValue: 120
   TaskID: 1
   TargetID: 0
